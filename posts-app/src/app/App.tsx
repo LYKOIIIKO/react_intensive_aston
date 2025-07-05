@@ -1,11 +1,12 @@
-import MainLayout from "../shared/layouts/MainLayout";
+import MainLayout from "../shared/layouts/MainLayout"
+import PostList from "../widgets/PostList/PostList"
 
 function App() {
 	return (
-		<>
-			<MainLayout />
-		</>
-	);
+		<MainLayout>
+			<PostList />
+		</MainLayout>
+	)
 }
 
-export default App;
+export default App

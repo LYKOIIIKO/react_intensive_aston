@@ -1,10 +1,18 @@
-import PostList from "../../widgets/PostList/PostList";
+import type { ReactNode } from "react"
+import LayoutFooter from "../../widgets/LayoutFooter/LayoutFooter"
+import LayoutHeader from "../../widgets/LayoutHeader/LayoutHeader"
 
-function MainLayout() {
+type MainLayoutProps = {
+	children: ReactNode
+}
+
+function MainLayout({ children }: MainLayoutProps) {
 	return (
 		<>
-			<PostList />
+			<LayoutHeader />
+			<main>{children}</main>
+			<LayoutFooter />
 		</>
-	);
+	)
 }
-export default MainLayout;
+export default MainLayout
