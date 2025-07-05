@@ -12,10 +12,8 @@ type Props = {
 const PostCard: FC<Props> = ({ post }) => {
 	return (
 		<li>
-			<div>
-				<h5>{post.title}</h5>
-				<p>{post.body}</p>
-			</div>
+			<h5>{post.title}</h5>
+			<p>{post.body}</p>
 		</li>
 	)
 }
