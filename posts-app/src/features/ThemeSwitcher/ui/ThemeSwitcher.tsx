@@ -1,16 +1,16 @@
-import { useTheme } from "@emotion/react"
 import Stack from "@mui/material/Stack"
 import Switch from "@mui/material/Switch"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
+import { useTheme } from "../../../shared/lib/theme/useTheme"
 
 function ThemeSwitcher() {
-	const [checked, setChecked] = useState(true)
 	const { theme, setTheme } = useTheme()
+	const [checked, setChecked] = useState(theme === "light" ? true : false)
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setChecked(e.target.checked)
-		if (checked) {
+		if (!checked) {
 			setTheme("light")
 		} else {
 			setTheme("dark")
@@ -20,7 +20,7 @@ function ThemeSwitcher() {
 	return (
 		<Stack direction="row" spacing={1} sx={{ alignItems: "center" }}>
 			<Typography>Темная тема</Typography>
-			<Switch defaultChecked checked={checked} onChange={handleChange} />
+			<Switch id="theme-switcher" checked={checked} onChange={handleChange} />
 			<Typography>Светлая тема</Typography>
 		</Stack>
 	)

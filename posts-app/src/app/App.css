@@ -3,3 +3,15 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+/* прижать футер к низу страницы */
+.app-theme-light,
+.app-theme-dark {
+	display: flex;
+	flex-direction: column;
+	min-height: 100dvh;
+}
+
+footer {
+	margin-top: auto;
+}

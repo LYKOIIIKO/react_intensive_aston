@@ -1,0 +1,16 @@
+:root {
+	--background-primary-light: rgb(241, 241, 235);
+	--text-primary-light: rgb(9, 50, 48);
+
+	--background-primary-dark: rgb(16, 32, 44);
+	--text-primary-dark: rgb(107, 187, 207);
+}
+
+.app-theme-light {
+	background-color: var(--background-primary-light);
+	color: var(--text-primary-light);
+}
+.app-theme-dark {
+	background-color: var(--background-primary-dark);
+	color: var(--text-primary-dark);
+}
