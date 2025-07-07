@@ -1,6 +1,4 @@
-import type { FC } from "react"
-
-type Props = {
+type PostCardProps = {
 	post: {
 		userId: number
 		id: number
@@ -9,7 +7,7 @@ type Props = {
 	}
 }
 
-const PostCard: FC<Props> = ({ post }) => {
+const PostCard = ({ post }: PostCardProps) => {
 	return (
 		<li>
 			<h5>{post.title}</h5>

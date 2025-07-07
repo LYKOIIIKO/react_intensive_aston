@@ -1,3 +1,9 @@
+@media (max-width: 900px) {
+	.container {
+		flex-direction: column;
+	}
+}
+
 .header {
 	padding: 15px 0;
 }
