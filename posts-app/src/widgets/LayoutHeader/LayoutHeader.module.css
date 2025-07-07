@@ -1,0 +1,24 @@
+@media (max-width: 900px) {
+	.container {
+		flex-direction: column;
+	}
+}
+
+.header {
+	padding: 15px 0;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1500px;
+	width: 90%;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.textWrapper {
+	display: flex;
+	gap: 30px;
+}
