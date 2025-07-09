@@ -18,8 +18,6 @@ function usePortal(id = "portal-root") {
 		children: React.ReactNode
 	}
 	const Portal = ({ children }: PortalProps) => {
-		console.log(rootRef.current)
-
 		return rootRef.current ? createPortal(children, rootRef.current) : null
 	}
 
