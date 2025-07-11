@@ -1,18 +1,16 @@
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 import { createPortal } from "react-dom"
 
 function usePortal(id = "portal-root") {
 	const rootRef = useRef<HTMLElement>(null)
 
-	useEffect(() => {
-		let container = document.getElementById(id)
-		if (!container) {
-			container = document.createElement("div")
-			container.id = id
-			document.body.appendChild(container)
-		}
-		rootRef.current = container
-	}, [id])
+	let container = document.getElementById(id)
+	if (!container) {
+		container = document.createElement("div")
+		container.id = id
+		document.body.appendChild(container)
+	}
+	rootRef.current = container
 
 	type PortalProps = {
 		children: React.ReactNode

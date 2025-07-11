@@ -1,17 +1,14 @@
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
 import ThemeSwitcher from "../../features/ThemeSwitcher/ui/ThemeSwitcher"
-import usePortal from "../../shared/portal/usePortal.tsx"
-import ButtonOpen from "../../shared/ui/Button/ButtonOpen.tsx"
-import Modal from "../../shared/ui/Modal/Modal.tsx"
+import ButtonToogle from "../../shared/ui/Button/ButtonToogle.tsx"
+import { Modal } from "../../shared/ui/Modal/Modal.tsx"
 import s from "./LayoutHeader.module.css"
 
 function LayoutHeader() {
 	const [open, setOpen] = useState(false)
-	const handleOpen = () => setOpen(true)
-	const handleClose = () => setOpen(false)
 
-	const Portal = usePortal("portal-modal")
+	const toogle = () => setOpen((prev) => !prev)
 
 	return (
 		<>
@@ -21,20 +18,22 @@ function LayoutHeader() {
 						<Typography className={s.title} variant="h6" fontWeight={600}>
 							Posts App
 						</Typography>
-						<ButtonOpen handleOpen={handleOpen} />
+						<ButtonToogle action={toogle}>о проекте</ButtonToogle>
 					</div>
 					<ThemeSwitcher />
 				</div>
 			</header>
-			<Portal>
-				{open && (
-					<Modal title="О проекте" handleClose={handleClose}>
+			{open && (
+				<Modal toogle={toogle}>
+					<Modal.Header>О проекте</Modal.Header>
+					<Modal.Body>
 						"Posts app"- это учебный проект в рамках интенсива по React от компании
 						Aston. В нем я учусь использовать возможности библиотеки, создавать
 						структуру проекта, а также готовлюсь к тех.ревью.
-					</Modal>
-				)}
-			</Portal>
+					</Modal.Body>
+					<Modal.Footer />
+				</Modal>
+			)}
 		</>
 	)
 }

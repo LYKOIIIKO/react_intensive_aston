@@ -8,11 +8,11 @@
 
 .app-theme-light,
 .modal-window-light {
-	background-color: var(--background-primary-light);
-	color: var(--text-primary-light);
+	background-color: var(--background-primary-light) !important;
+	color: var(--text-primary-light) !important;
 }
 .app-theme-dark,
 .modal-window-dark {
-	background-color: var(--background-primary-dark);
-	color: var(--text-primary-dark);
+	background-color: var(--background-primary-dark) !important;
+	color: var(--text-primary-dark) !important;
 }

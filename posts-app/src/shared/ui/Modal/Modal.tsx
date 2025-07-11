@@ -1,27 +1,53 @@
 import Typography from "@mui/material/Typography"
+import { createContext, useContext } from "react"
 import { useTheme } from "../../lib/theme/useTheme"
-import ButtonClose from "../Button/ButtonClose"
+import usePortal from "../../portal/usePortal"
+import ButtonToogle from "../Button/ButtonToogle"
 import * as s from "./Modal.module.css"
 
+const ModalContext = createContext<{ toogle: () => void } | undefined>(undefined)
+
 type ModalProps = {
-	title: string
-	handleClose: () => void
+	toogle: () => void
 	children: React.ReactNode | React.ReactNode[]
 }
-
-function Modal({ title, handleClose, children }: ModalProps) {
+export function Modal({ toogle, children }: ModalProps) {
 	const { theme } = useTheme()
+
+	const Portal = usePortal("portal-modal")
+
 	return (
-		<div className={s.wrapper}>
-			<div className={`${s.container} modal-window-${theme}`}>
-				<Typography className={s.title} variant="h6">
-					{title}
-				</Typography>
-				<Typography className={s.description}>{children}</Typography>
-				<ButtonClose handleClose={handleClose} />
-			</div>
-		</div>
+		<Portal>
+			<ModalContext.Provider value={{ toogle }}>
+				<div className={s.wrapper}>
+					<div className={`${s.container} modal-window-${theme}`}>{children}</div>
+				</div>
+			</ModalContext.Provider>
+		</Portal>
 	)
 }
 
-export default Modal
+type ModalHeaderProps = {
+	children: React.ReactNode | React.ReactNode[]
+}
+
+Modal.Header = ({ children }: ModalHeaderProps) => {
+	return (
+		<Typography className={s.title} variant="h6">
+			{children}
+		</Typography>
+	)
+}
+
+type ModalBodyProps = {
+	children: React.ReactNode | React.ReactNode[]
+}
+
+Modal.Body = ({ children }: ModalBodyProps) => {
+	return <Typography className={s.description}>{children}</Typography>
+}
+
+Modal.Footer = () => {
+	const context = useContext(ModalContext)
+	return <ButtonToogle action={context.toogle}>закрыть</ButtonToogle>
+}
