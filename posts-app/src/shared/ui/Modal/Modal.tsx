@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography"
 import { useTheme } from "../../lib/theme/useTheme"
-import usePortal from "../../portal/usePortal"
+import Portal from "../../portal/Portal"
 import ButtonClose from "../Button/ButtonClose"
 import * as s from "./Modal.module.css"
 
@@ -13,9 +13,8 @@ type ModalProps = {
 function Modal({ title, handleClose, children }: ModalProps) {
 	const { theme } = useTheme()
 
-	const Portal = usePortal("portal-modal")
 	return (
-		<Portal>
+		<Portal id="portal-modal">
 			<div className={s.wrapper}>
 				<div className={`${s.container} modal-window-${theme}`}>
 					<Typography className={s.title} variant="h6">

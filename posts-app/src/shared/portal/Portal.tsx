@@ -1,7 +1,12 @@
 import { useRef } from "react"
 import { createPortal } from "react-dom"
 
-function usePortal(id = "portal-root") {
+type PortalProps = {
+	id: string
+	children: React.ReactNode
+}
+
+function Portal({ id = "portal-root", children }: PortalProps) {
 	const rootRef = useRef<HTMLElement>(null)
 
 	let container = document.getElementById(id)
@@ -12,14 +17,7 @@ function usePortal(id = "portal-root") {
 	}
 	rootRef.current = container
 
-	type PortalProps = {
-		children: React.ReactNode
-	}
-	const Portal = ({ children }: PortalProps) => {
-		return rootRef.current ? createPortal(children, rootRef.current) : null
-	}
-
-	return Portal
+	return rootRef.current ? createPortal(children, rootRef.current) : null
 }
 
-export default usePortal
+export default Portal
