@@ -1,8 +1,10 @@
 :root {
 	--background-primary-light: rgb(241, 241, 235);
+	--background-secondary-light: #fafafa;
 	--text-primary-light: rgb(9, 50, 48);
 
 	--background-primary-dark: rgb(16, 32, 44);
+	--background-secondary-dark: rgb(22, 41, 56);
 	--text-primary-dark: rgb(107, 187, 207);
 }
 
@@ -14,5 +16,15 @@
 .app-theme-dark,
 .modal-window-dark {
 	background-color: var(--background-primary-dark) !important;
+	color: var(--text-primary-dark) !important;
+}
+
+.app-theme-light .post-list-theme {
+	background-color: var(--background-secondary-light) !important;
+	color: var(--text-primary-light) !important;
+}
+
+.app-theme-dark .post-list-theme {
+	background-color: var(--background-secondary-dark) !important;
 	color: var(--text-primary-dark) !important;
 }

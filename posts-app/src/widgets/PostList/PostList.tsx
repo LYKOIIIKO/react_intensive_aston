@@ -1,13 +1,14 @@
+import List from "@mui/material/List"
 import PostCard from "../../entities/post/ui/PostCard"
-import { fakePosts as posts } from "../../mocks/mocks"
+import { fakePosts as posts } from "../../mocks/fakePosts"
 
 function PostList() {
 	return (
-		<ul>
+		<List>
 			{posts.map((post) => (
 				<PostCard key={post.id} post={post} />
 			))}
-		</ul>
+		</List>
 	)
 }
 export default PostList

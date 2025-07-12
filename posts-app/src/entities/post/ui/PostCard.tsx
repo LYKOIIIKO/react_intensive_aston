@@ -1,4 +1,13 @@
-type PostCardProps = {
+import Avatar from "@mui/material/Avatar"
+import ListItem from "@mui/material/ListItem"
+import Paper from "@mui/material/Paper"
+import Typography from "@mui/material/Typography"
+import { useCallback, useState } from "react"
+import { fakeComments as comments } from "../../../mocks/fakeComments"
+import CommentList from "../../../widgets/CommentList/ui/CommentList"
+import * as s from "./PostCard.module.css"
+
+export type PostCardProps = {
 	post: {
 		userId: number
 		id: number
@@ -8,11 +17,28 @@ type PostCardProps = {
 }
 
 const PostCard = ({ post }: PostCardProps) => {
+	const [open, setOpen] = useState(false)
+
+	const toogle = useCallback(() => {
+		setOpen((prev) => !prev)
+	}, [])
+
+	const commentStatus = comments.some((item) => item.postId === post.id)
+
 	return (
-		<li>
-			<h5>{post.title}</h5>
-			<p>{post.body}</p>
-		</li>
+		<ListItem className={s.wrapper}>
+			<Paper className={`${s.container} post-list-theme`}>
+				<div className={s.postContainer}>
+					<Avatar variant="rounded">{post.userId}</Avatar>
+					<div>
+						<Typography variant="h6">{post.title}</Typography>
+						<Typography>{post.body}</Typography>
+					</div>
+				</div>
+
+				{commentStatus && <CommentList post={post} open={open} toogle={toogle} />}
+			</Paper>
+		</ListItem>
 	)
 }
 export default PostCard
