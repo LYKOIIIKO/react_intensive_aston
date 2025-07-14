@@ -13,6 +13,11 @@
 			{
 				"name": "typescript-plugin-css-modules"
 			}
-		]
+		],
+		"paths": {
+			"react": [
+				"./node_modules/@types/react"
+			]
+		}
 	}
 }

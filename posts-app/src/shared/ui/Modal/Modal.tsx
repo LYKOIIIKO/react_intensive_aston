@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography"
 import { createContext, useContext } from "react"
 import { useTheme } from "../../lib/theme/useTheme"
-import usePortal from "../../portal/usePortal"
+import Portal from "../../portal/Portal"
 import ButtonToogle from "../Button/ButtonToogle"
 import * as s from "./Modal.module.css"
 
@@ -14,10 +14,8 @@ type ModalProps = {
 export function Modal({ toogle, children }: ModalProps) {
 	const { theme } = useTheme()
 
-	const Portal = usePortal("portal-modal")
-
 	return (
-		<Portal>
+		<Portal id="portal-modal">
 			<ModalContext.Provider value={{ toogle }}>
 				<div className={s.wrapper}>
 					<div className={`${s.container} modal-window-${theme}`}>{children}</div>
