@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box"
 import Slider from "@mui/material/Slider"
 import Typography from "@mui/material/Typography"
+import React from "react"
 
 type PostLengthFilterProps = {
 	value: number[]
@@ -36,4 +37,4 @@ function PostLengthFilter({ value, changeValue, maxValue }: PostLengthFilterProp
 		</div>
 	)
 }
-export default PostLengthFilter
+export default React.memo(PostLengthFilter)

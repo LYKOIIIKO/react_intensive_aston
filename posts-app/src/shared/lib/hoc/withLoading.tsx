@@ -1,12 +1,20 @@
-import type { PropsWithChildren } from "react"
+import type { FC } from "react"
 
 type ComponentWithLoadingProps = {
 	isLoading: boolean
-	props: PropsWithChildren
+	props?: React.ReactNode
 }
-function withLoading(Component: React.ReactElement) {
+
+type ComponentProps = {
+	props?: React.ReactNode
+}
+function withLoading(Component: FC<ComponentProps>) {
 	return function ComponentWithLoading({ isLoading, ...props }: ComponentWithLoadingProps) {
-		return isLoading ? <div>Загрузка...</div> : <Component {...props} />
+		return isLoading ? (
+			<div className="loading-component">Загрузка...</div>
+		) : (
+			<Component {...props} />
+		)
 	}
 }
 export default withLoading
