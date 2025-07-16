@@ -6,10 +6,12 @@ import { useParams } from "react-router"
 import PostCard from "../../entities/post/ui/PostCard"
 import { filterByLength } from "../../features/PostLengthFilter/lib/filterByLength"
 import PostLengthFilter from "../../features/PostLengthFilter/ui/PostLengthFilter"
-import { fakePosts } from "../../mocks/fakePosts"
+import usePosts from "../../features/PostList/model/hooks/usePosts"
 
 function PostList() {
 	const { postId, userId } = useParams()
+
+	const fakePosts = usePosts()
 
 	const maxTitleLength = useMemo(() => {
 		return fakePosts.reduce((max, i) => Math.max(max, i.title.length), -Infinity)
