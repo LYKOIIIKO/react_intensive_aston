@@ -1,0 +1,9 @@
+.container {
+	justify-content: center !important;
+}
+
+.link {
+	color: inherit;
+	text-decoration: none;
+	text-align: center;
+}

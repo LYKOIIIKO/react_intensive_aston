@@ -1,12 +1,16 @@
 import Grid from "@mui/material/Grid"
 import List from "@mui/material/List"
+import Typography from "@mui/material/Typography"
 import { useCallback, useMemo, useState } from "react"
+import { useParams } from "react-router"
 import PostCard from "../../entities/post/ui/PostCard"
 import { filterByLength } from "../../features/PostLengthFilter/lib/filterByLength"
 import PostLengthFilter from "../../features/PostLengthFilter/ui/PostLengthFilter"
 import { fakePosts } from "../../mocks/fakePosts"
 
 function PostList() {
+	const { postId, userId } = useParams()
+
 	const maxTitleLength = useMemo(() => {
 		return fakePosts.reduce((max, i) => Math.max(max, i.title.length), -Infinity)
 	}, [fakePosts])
@@ -23,18 +27,33 @@ function PostList() {
 
 	return (
 		<Grid container spacing={3}>
-			<Grid size={{ xs: 12, md: 4 }}>
-				<PostLengthFilter
-					value={length}
-					changeValue={handleChangeLength}
-					maxValue={maxTitleLength}
-				/>
-			</Grid>
+			{!postId && !userId && (
+				<Grid size={{ xs: 12, md: 4 }}>
+					<PostLengthFilter
+						value={length}
+						changeValue={handleChangeLength}
+						maxValue={maxTitleLength}
+					/>
+				</Grid>
+			)}
+
 			<Grid size="grow">
 				<List>
-					{filteredPosts.map((post) => (
-						<PostCard key={post.id} post={post} />
-					))}
+					{!postId &&
+						!userId &&
+						filteredPosts.map((post) => <PostCard key={post.id} post={post} />)}
+					{!filteredPosts.length && (
+						<div>
+							<Typography variant="h6" textAlign="center">
+								Постов не найдено
+							</Typography>
+						</div>
+					)}
+					{(postId || userId) &&
+						filteredPosts.map((post) => {
+							if (post.id === +postId || post.userId === +userId)
+								return <PostCard key={post.id} post={post} />
+						})}
 				</List>
 			</Grid>
 		</Grid>

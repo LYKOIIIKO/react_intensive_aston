@@ -3,9 +3,10 @@ import ListItem from "@mui/material/ListItem"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import { useCallback, useState } from "react"
+import { Link } from "react-router"
 import { fakeComments as comments } from "../../../mocks/fakeComments"
 import CommentList from "../../../widgets/CommentList/ui/CommentList"
-import * as s from "./PostCard.module.css"
+import s from "./PostCard.module.css"
 
 export type PostCardProps = {
 	post: {
@@ -29,9 +30,14 @@ const PostCard = ({ post }: PostCardProps) => {
 		<ListItem className={s.wrapper}>
 			<Paper className={`${s.container} post-list-theme`}>
 				<div className={s.postContainer}>
-					<Avatar variant="rounded">{post.userId}</Avatar>
+					<Link to={`/users/${post.userId}`} className={s.link}>
+						<Avatar variant="rounded">{post.userId}</Avatar>
+					</Link>
+
 					<div>
-						<Typography variant="h6">{post.title}</Typography>
+						<Link to={`/posts/${post.id}`} className={s.link}>
+							<Typography variant="h6">{post.title}</Typography>
+						</Link>
 						<Typography>{post.body}</Typography>
 					</div>
 				</div>

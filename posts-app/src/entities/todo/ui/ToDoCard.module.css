@@ -1,0 +1,12 @@
+.complited,
+.notComplited {
+	background-color: #73ed3b;
+
+	display: flex;
+	gap: 20px;
+	align-items: center;
+}
+
+.notComplited {
+	background-color: transparent;
+}

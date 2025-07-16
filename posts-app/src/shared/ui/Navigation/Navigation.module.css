@@ -1,0 +1,15 @@
+.container {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+}
+
+.link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.linkActive {
+	text-decoration: underline;
+	color: inherit;
+}

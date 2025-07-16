@@ -1,8 +1,10 @@
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
+import { NavLink } from "react-router"
 import ThemeSwitcher from "../../features/ThemeSwitcher/ui/ThemeSwitcher"
 import ButtonToogle from "../../shared/ui/Button/ButtonToogle.tsx"
 import { Modal } from "../../shared/ui/Modal/Modal.tsx"
+import Navigation from "../../shared/ui/Navigation/Navigation.tsx"
 import s from "./LayoutHeader.module.css"
 
 function LayoutHeader() {
@@ -15,11 +17,14 @@ function LayoutHeader() {
 			<header className={s.header}>
 				<div className={s.container}>
 					<div className={s.textWrapper}>
-						<Typography className={s.title} variant="h6" fontWeight={600}>
-							Posts App
-						</Typography>
+						<NavLink to="/" className={s.link}>
+							<Typography className={s.title} variant="h6" fontWeight={600}>
+								Posts App
+							</Typography>
+						</NavLink>
 						<ButtonToogle action={toogle}>о проекте</ButtonToogle>
 					</div>
+					<Navigation />
 					<ThemeSwitcher />
 				</div>
 			</header>

@@ -1,28 +1,13 @@
-import { useEffect, useState } from "react"
-import MainLayout from "../shared/layouts/MainLayout"
-import withLoading from "../shared/lib/hoc/withLoading"
+import { RouterProvider } from "react-router"
 import ThemeProvider from "../shared/lib/theme/ThemeProvider"
-import PostList from "../widgets/PostList/PostList"
 import "./App.css"
+import router from "./providers/router/router"
 import "./themes.css"
 
-const PostListWithLoading = withLoading(PostList)
-
 function App() {
-	//временная имитация загрузки
-	const [loading, setLoading] = useState(true)
-
-	useEffect(() => {
-		setTimeout(() => {
-			setLoading(false)
-		}, 2000)
-	}, [])
-
 	return (
 		<ThemeProvider>
-			<MainLayout>
-				<PostListWithLoading isLoading={loading} />
-			</MainLayout>
+			<RouterProvider router={router} />
 		</ThemeProvider>
 	)
 }

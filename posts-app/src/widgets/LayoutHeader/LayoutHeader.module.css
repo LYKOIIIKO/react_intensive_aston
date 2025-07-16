@@ -16,9 +16,15 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 15px;
 }
 
 .textWrapper {
 	display: flex;
 	gap: 30px;
+}
+
+.link {
+	color: inherit;
+	text-decoration: none;
 }
