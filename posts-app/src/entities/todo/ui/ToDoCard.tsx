@@ -1,15 +1,11 @@
 import Checkbox from "@mui/material/Checkbox"
 import ListItem from "@mui/material/ListItem"
 import Typography from "@mui/material/Typography"
+import type { ToDo } from "../../../shared/types/ToDo"
 import s from "./ToDoCard.module.css"
 
 type ToDoCardProps = {
-	todo: {
-		userId: number
-		id: number
-		title: string
-		completed: boolean
-	}
+	todo: ToDo
 }
 
 function ToDoCard({ todo }: ToDoCardProps) {

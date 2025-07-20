@@ -7,6 +7,7 @@ import s from "./MainLayout.module.css"
 
 function MainLayout() {
 	const { theme } = useTheme()
+
 	return (
 		<div className={`app-theme-${theme}`}>
 			<CssBaseline />

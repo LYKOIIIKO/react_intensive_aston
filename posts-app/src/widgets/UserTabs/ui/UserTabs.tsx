@@ -9,14 +9,8 @@ function UserTabs() {
 			<NavLink to="posts" className={({ isActive }) => (isActive ? s.linkActive : s.link)}>
 				<Button color="inherit">Посты</Button>
 			</NavLink>
-			<NavLink to="comments" className={({ isActive }) => (isActive ? s.linkActive : s.link)}>
-				<Button color="inherit">Комментарии</Button>
-			</NavLink>
 			<NavLink to="albums" className={({ isActive }) => (isActive ? s.linkActive : s.link)}>
 				<Button color="inherit">Альбомы</Button>
-			</NavLink>
-			<NavLink to="photos" className={({ isActive }) => (isActive ? s.linkActive : s.link)}>
-				<Button color="inherit">Фото</Button>
 			</NavLink>
 			<NavLink to="todos" className={({ isActive }) => (isActive ? s.linkActive : s.link)}>
 				<Button color="inherit">Задачи</Button>

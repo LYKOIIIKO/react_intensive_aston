@@ -4,27 +4,30 @@ import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import { useCallback, useState } from "react"
 import { Link } from "react-router"
-import { fakeComments as comments } from "../../../mocks/fakeComments"
+import type { Post } from "../../../shared/types/Post"
 import CommentList from "../../../widgets/CommentList/ui/CommentList"
+import { useGetCommentsByPostIdQuery } from "../../comment/api/commentsApi"
 import s from "./PostCard.module.css"
 
-export type PostCardProps = {
-	post: {
-		userId: number
-		id: number
-		title: string
-		body: string
-	}
+type PostCardProps = {
+	post: Post
 }
 
 const PostCard = ({ post }: PostCardProps) => {
+	const { data: comments, error, isLoading } = useGetCommentsByPostIdQuery(post.id)
+
+	if (error) {
+		if ("status" in error) {
+			return <div>Ошибка: {error.status}</div>
+		}
+		return <div>Ошибка :{error.message}</div>
+	}
+
 	const [open, setOpen] = useState(false)
 
 	const toogle = useCallback(() => {
 		setOpen((prev) => !prev)
 	}, [])
-
-	const commentStatus = comments.some((item) => item.postId === post.id)
 
 	return (
 		<ListItem className={s.wrapper}>
@@ -42,7 +45,13 @@ const PostCard = ({ post }: PostCardProps) => {
 					</div>
 				</div>
 
-				{commentStatus && <CommentList post={post} open={open} toogle={toogle} />}
+				{isLoading ? (
+					<p>Загрузка комментариев...</p>
+				) : (
+					comments?.length && (
+						<CommentList comments={comments} open={open} toogle={toogle} />
+					)
+				)}
 			</Paper>
 		</ListItem>
 	)

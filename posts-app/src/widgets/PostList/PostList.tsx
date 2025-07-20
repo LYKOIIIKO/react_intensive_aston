@@ -1,31 +1,49 @@
 import Grid from "@mui/material/Grid"
 import List from "@mui/material/List"
+import ListItem from "@mui/material/ListItem"
 import Typography from "@mui/material/Typography"
-import { useCallback, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
+import { useSelector } from "react-redux"
 import { useParams } from "react-router"
+import type { RootState } from "../../app/providers/store/slices"
+import { selectPostById } from "../../entities/post/model/slice/postSlice"
 import PostCard from "../../entities/post/ui/PostCard"
 import { filterByLength } from "../../features/PostLengthFilter/lib/filterByLength"
 import PostLengthFilter from "../../features/PostLengthFilter/ui/PostLengthFilter"
 import usePosts from "../../features/PostList/model/hooks/usePosts"
+import Page404 from "../../pages/404-page"
 
 function PostList() {
 	const { postId, userId } = useParams()
 
-	const fakePosts = usePosts()
+	const { posts, error } = usePosts()
+
+	const postById = useSelector((state: RootState) => selectPostById(state, +postId))
+
+	if (error) {
+		if ("status" in error) {
+			return <div>Ошибка: {error.status}</div>
+		}
+		return <div>Ошибка :{error.message}</div>
+	}
 
 	const maxTitleLength = useMemo(() => {
-		return fakePosts.reduce((max, i) => Math.max(max, i.title.length), -Infinity)
-	}, [fakePosts])
+		return posts.reduce((max, i) => Math.max(max, i.title.length), 0)
+	}, [posts])
 
 	const [length, setLength] = useState([0, maxTitleLength])
 
 	const filteredPosts = useMemo(() => {
-		return filterByLength(length)
+		return filterByLength(posts, length)
 	}, [length])
 
 	const handleChangeLength = useCallback((value: number[]) => {
 		setLength(value)
 	}, [])
+
+	useEffect(() => {
+		setLength([0, maxTitleLength])
+	}, [maxTitleLength])
 
 	return (
 		<Grid container spacing={3}>
@@ -43,20 +61,25 @@ function PostList() {
 				<List>
 					{!postId &&
 						!userId &&
-						filteredPosts.map((post) => <PostCard key={post.id} post={post} />)}
+						filteredPosts?.map((post) => <PostCard key={post.id} post={post} />)}
+
+					{userId &&
+						filteredPosts?.map((post) => {
+							if (post.userId === +userId)
+								return <PostCard key={post.id} post={post} />
+						})}
+
+					{postById && <PostCard post={postById} />}
+
 					{!filteredPosts.length && (
-						<div>
+						<ListItem>
 							<Typography variant="h6" textAlign="center">
 								Постов не найдено
 							</Typography>
-						</div>
+						</ListItem>
 					)}
-					{(postId || userId) &&
-						filteredPosts.map((post) => {
-							if (post.id === +postId || post.userId === +userId)
-								return <PostCard key={post.id} post={post} />
-						})}
 				</List>
+				{postId && !postById && <Page404 />}
 			</Grid>
 		</Grid>
 	)

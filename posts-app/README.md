@@ -63,3 +63,35 @@
 5. Оптимизации:
 
     - useMemo, useCallback в PostList
+
+## Homework - 4
+
+Необходимо добавить маршруты для страниц с постами, комментариями, альбомами, фото и задачами пользователей. Реализовать навигацию и кастомный хук для получения постов.
+
+**Задание:**
+
+1. Настроить маршруты:
+
+    - /posts, /posts/:id, /users/:id/albums, /albums/:id/photos, /users/:id/todos, /users/:id/posts
+    - Роуты → src/pages/
+    - Роутинг → src/app/providers/router/
+
+2. Навигация через NavLink → UserTabs → src/widgets/UserTabs/
+3. Хук usePosts → src/features/PostList/model/hooks/
+
+## Homework - 5
+
+Необходимо настроить глобальное состояние приложения с использованием Redux Toolkit и подключить работу с API через RTK Query. Реализовать получение данных и кэширование.
+
+**Задание:**
+
+1. Redux Toolkit Store → src/app/providers/store/
+2. RTK Query API:
+
+    - postsApi, commentsApi, albumsApi, todosApi → src/entities/[entity]/api/
+
+3. createEntityAdapter:
+
+    - postSlice, userSlice → src/entities/[entity]/model/slice/
+
+4. Инвалидация, кэширование, загрузка по userId и postId

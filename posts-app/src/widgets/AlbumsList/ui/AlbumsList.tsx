@@ -1,45 +1,61 @@
 import List from "@mui/material/List"
-import Typography from "@mui/material/Typography"
-import React from "react"
 import { useParams } from "react-router"
+import {
+	useGetAlbumsByUserQuery,
+	useGetAlbumsQuery,
+	useGetPhotosByAlbumIdQuery,
+} from "../../../entities/album/api/albumsApi"
 import AlbumCard from "../../../entities/album/ui/AlbumCard"
-import { fakeAlbums } from "../../../mocks/fakeAlbums"
 import PhotosList from "../../PhotosList/ui/PhotosList"
 
 function AlbumsList() {
 	const { albumId, userId } = useParams()
 
-	const userAlbums = fakeAlbums.filter((album) => album.userId === +userId)
+	const { data: albums, error, isLoading } = useGetAlbumsQuery()
+
+	const {
+		data: albumByUserId,
+		error: errorUser,
+		isLoading: isLoadingUser,
+	} = useGetAlbumsByUserQuery(+userId)
+
+	const {
+		data: photosByAlbumId,
+		error: errorPhoto,
+		isLoading: isLoadingPhoto,
+	} = useGetPhotosByAlbumIdQuery(+albumId)
+
+	if (isLoading || isLoadingUser || isLoadingPhoto) return <p>Загрузка...</p>
+
+	if (error) {
+		if ("status" in error) {
+			return <div>Ошибка: {error.status}</div>
+		}
+		return <div>Ошибка :{error.message}</div>
+	} else if (errorUser) {
+		if ("status" in errorUser) {
+			return <div>Ошибка: {errorUser.status}</div>
+		}
+		return <div>Ошибка :{errorUser.message}</div>
+	} else if (errorPhoto) {
+		if ("status" in errorPhoto) {
+			return <div>Ошибка: {errorPhoto.status}</div>
+		}
+		return <div>Ошибка :{errorPhoto.message}</div>
+	}
 
 	return (
-		<List>
-			{!albumId &&
-				!userId &&
-				fakeAlbums.map((album) => <AlbumCard key={album.id} album={album} />)}
+		<>
+			<List>
+				{!albumId &&
+					!userId &&
+					albums?.map((album) => <AlbumCard key={album.id} album={album} />)}
 
-			{albumId &&
-				!userId &&
-				fakeAlbums.map((album) => {
-					if (album.id === +albumId)
-						return (
-							<React.Fragment key={album.id}>
-								<AlbumCard album={album} />
-								<PhotosList />
-							</React.Fragment>
-						)
-				})}
-			{!albumId &&
-				userId &&
-				userAlbums.map((album) => {
-					if (album.userId === +userId)
-						return (
-							<React.Fragment key={album.id}>
-								<AlbumCard album={album} />
-							</React.Fragment>
-						)
-				})}
-			{userId && !userAlbums.length && <Typography>Альбомов нет</Typography>}
-		</List>
+				{albumByUserId &&
+					albumByUserId?.map((album) => <AlbumCard key={album.id} album={album} />)}
+			</List>
+			{photosByAlbumId && <PhotosList photos={photosByAlbumId} />}
+		</>
 	)
 }
 export default AlbumsList

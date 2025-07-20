@@ -1,6 +1,6 @@
 import Grid from "@mui/material/Grid"
 import { Outlet, useParams } from "react-router"
-import { fakeUsers } from "../../../mocks/fakeUsers"
+import useUsers from "../../../features/UsersList/model/hooks/useUsers"
 import UserInfo from "../../../widgets/UserInfo/ui/UserInfo"
 import UserTabs from "../../../widgets/UserTabs/ui/UserTabs"
 import Page404 from "../../404-page"
@@ -8,12 +8,21 @@ import Page404 from "../../404-page"
 function UserPage() {
 	const { userId } = useParams()
 
-	let checkId = fakeUsers.some((user) => user.id === +userId)
+	const { userById, error, isLoading } = useUsers(+userId)
 
-	return checkId ? (
+	if (isLoading) return <p>Загрузка...</p>
+
+	if (error) {
+		if ("status" in error) {
+			return <div>Ошибка: {error.status}</div>
+		}
+		return <div>Ошибка :{error.message}</div>
+	}
+
+	return userById ? (
 		<Grid container spacing={3}>
 			<Grid size={{ xs: 12, md: 4 }}>
-				<UserInfo uid={userId} />
+				<UserInfo user={userById} />
 			</Grid>
 			<Grid container size={{ xs: 12, md: "grow" }}>
 				<Grid size={12}>

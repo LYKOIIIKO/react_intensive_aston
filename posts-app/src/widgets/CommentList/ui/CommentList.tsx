@@ -4,17 +4,16 @@ import List from "@mui/material/List"
 import Typography from "@mui/material/Typography"
 import React from "react"
 import CommentCard from "../../../entities/comment/ui/CommentCard"
-import type { PostCardProps } from "../../../entities/post/ui/PostCard"
-import { fakeComments as comments } from "../../../mocks/fakeComments"
+import type { Comment } from "../../../shared/types/Comment"
 import s from "./CommentList.module.css"
 
 type CommentListProps = {
-	post: PostCardProps["post"]
+	comments: Comment[]
 	open: boolean
 	toogle: () => void
 }
 
-function CommentList({ post, open, toogle }: CommentListProps) {
+function CommentList({ comments, open, toogle }: CommentListProps) {
 	const handleToogle = () => toogle()
 
 	return (
@@ -25,15 +24,12 @@ function CommentList({ post, open, toogle }: CommentListProps) {
 			</div>
 			{open && (
 				<List>
-					{comments.map((comment) => {
-						if (comment.postId === post.id)
-							return (
-								<React.Fragment key={comment.id}>
-									<Divider />
-									<CommentCard comment={comment} />
-								</React.Fragment>
-							)
-					})}
+					{comments.map((comment) => (
+						<React.Fragment key={comment.id}>
+							<Divider />
+							<CommentCard comment={comment} />
+						</React.Fragment>
+					))}
 				</List>
 			)}
 		</div>

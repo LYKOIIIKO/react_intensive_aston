@@ -1,6 +1,6 @@
-import { fakePosts as posts } from "../../../mocks/fakePosts"
+import type { Post } from "../../../shared/types/Post"
 
-export function filterByLength(value: number[]) {
+export function filterByLength(posts: Post[], value: number[]) {
 	if (value) {
 		const filteredPosts = posts.filter((post) => {
 			if (post.title.length >= value[0] && post.title.length <= value[1]) return post

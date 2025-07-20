@@ -1,12 +1,9 @@
 import ListItem from "@mui/material/ListItem"
 import { Link } from "react-router"
+import type { Album } from "../../../shared/types/Album"
 
 type AlbumCardProps = {
-	album: {
-		userId: number
-		id: number
-		title: string
-	}
+	album: Album
 }
 
 function AlbumCard({ album }: AlbumCardProps) {

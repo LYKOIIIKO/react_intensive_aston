@@ -1,9 +1,7 @@
 import { createBrowserRouter } from "react-router"
 import AlbumsPage from "../../../pages/albums-page"
-import CommentsPage from "../../../pages/comments-page"
 import IndexPage from "../../../pages/index-page"
 import PhotoPage from "../../../pages/photo-page"
-import PhotosPage from "../../../pages/photos-page"
 import PostsPage from "../../../pages/posts-page"
 import ToDosPage from "../../../pages/todos-page"
 import UserPage from "../../../pages/user-page"
@@ -32,10 +30,8 @@ const router = createBrowserRouter([
 				path: "users/:userId",
 				Component: UserPage,
 				children: [
-					{ path: "albums", Component: AlbumsPage },
-					{ path: "photos", Component: PhotosPage },
 					{ path: "posts", Component: PostsPage },
-					{ path: "comments", Component: CommentsPage },
+					{ path: "albums", Component: AlbumsPage },
 					{ path: "todos", Component: ToDosPage },
 				],
 			},

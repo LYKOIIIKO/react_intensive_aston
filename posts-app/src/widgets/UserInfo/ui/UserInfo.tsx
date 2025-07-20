@@ -1,15 +1,11 @@
 import Typography from "@mui/material/Typography"
-import { fakeUsers } from "../../../mocks/fakeUsers"
+import type { User } from "../../../shared/types/User"
 
 type UserInfoProps = {
-	uid?: string
+	user: User
 }
 
-function UserInfo({ uid }: UserInfoProps) {
-	if (uid == undefined) return
-
-	let user = fakeUsers.find((user) => user.id === +uid)
-
+function UserInfo({ user }: UserInfoProps) {
 	return (
 		<div>
 			<Typography>{user?.username}</Typography>

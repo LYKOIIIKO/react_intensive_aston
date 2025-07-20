@@ -1,15 +1,10 @@
 import ListItem from "@mui/material/ListItem"
 import Typography from "@mui/material/Typography"
+import type { Comment } from "../../../shared/types/Comment"
 import s from "./CommentCard.module.css"
 
 type CommentCardProps = {
-	comment: {
-		postId: number
-		id: number
-		name: string
-		email: string
-		body: string
-	}
+	comment: Comment
 }
 
 function CommentCard({ comment }: CommentCardProps) {
