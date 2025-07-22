@@ -5,9 +5,11 @@ const todosApi = api.injectEndpoints({
 	endpoints: (build) => ({
 		getToDos: build.query<ToDo[], void>({
 			query: () => "todos",
+			providesTags: ["Users"],
 		}),
 		getToDosByUserId: build.query<ToDo[], number>({
 			query: (id) => `todos?userId=${id}`,
+			providesTags: ["Users"],
 		}),
 	}),
 })

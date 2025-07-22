@@ -7,6 +7,7 @@ import { useSelector } from "react-redux"
 import { useParams } from "react-router"
 import type { RootState } from "../../app/providers/store/slices"
 import { selectPostById } from "../../entities/post/model/slice/postSlice"
+import AddPost from "../../entities/post/ui/AddPost"
 import PostCard from "../../entities/post/ui/PostCard"
 import { filterByLength } from "../../features/PostLengthFilter/lib/filterByLength"
 import PostLengthFilter from "../../features/PostLengthFilter/ui/PostLengthFilter"
@@ -18,9 +19,7 @@ function PostList() {
 
 	const { posts, error, isLoading } = usePosts()
 
-	const postById = useSelector((state: RootState) =>
-		postId ? selectPostById(state, +postId) : undefined
-	)
+	const postById = useSelector((state: RootState) => (postId ? selectPostById(state, +postId) : undefined))
 
 	if (error) {
 		if ("status" in error) {
@@ -51,26 +50,22 @@ function PostList() {
 
 	return (
 		<Grid container spacing={3}>
+			<Grid>
+				<AddPost />
+			</Grid>
 			{!postId && !userId && (
 				<Grid size={{ xs: 12, md: 4 }}>
-					<PostLengthFilter
-						value={length}
-						changeValue={handleChangeLength}
-						maxValue={maxTitleLength}
-					/>
+					<PostLengthFilter value={length} changeValue={handleChangeLength} maxValue={maxTitleLength} />
 				</Grid>
 			)}
 
 			<Grid size="grow">
 				<List>
-					{!postId &&
-						!userId &&
-						filteredPosts.map((post) => <PostCard key={post.id} post={post} />)}
+					{!postId && !userId && filteredPosts.map((post) => <PostCard key={post.id} post={post} />)}
 
 					{userId &&
 						filteredPosts.map((post) => {
-							if (post.userId === +userId)
-								return <PostCard key={post.id} post={post} />
+							if (post.userId === +userId) return <PostCard key={post.id} post={post} />
 						})}
 
 					{postById && <PostCard post={postById} />}

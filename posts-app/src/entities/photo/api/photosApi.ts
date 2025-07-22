@@ -5,9 +5,11 @@ const photosApi = api.injectEndpoints({
 	endpoints: (build) => ({
 		getPhotos: build.query<Photo[], void>({
 			query: () => "photos",
+			providesTags: ["Albums"],
 		}),
 		getPhotoById: build.query<Photo, number>({
 			query: (id) => `photos/${id}`,
+			providesTags: ["Albums"],
 		}),
 	}),
 })
