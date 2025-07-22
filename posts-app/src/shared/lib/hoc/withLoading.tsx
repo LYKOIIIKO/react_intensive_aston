@@ -2,11 +2,11 @@ import type { FC } from "react"
 
 type ComponentWithLoadingProps = {
 	isLoading: boolean
-	props?: React.ReactNode
+	props?: {}
 }
 
 type ComponentProps = {
-	props?: React.ReactNode
+	props?: {}
 }
 function withLoading(Component: FC<ComponentProps>) {
 	return function ComponentWithLoading({ isLoading, ...props }: ComponentWithLoadingProps) {
