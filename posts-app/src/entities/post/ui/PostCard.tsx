@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography"
 import { useCallback, useState } from "react"
 import { fakeComments as comments } from "../../../mocks/fakeComments"
 import CommentList from "../../../widgets/CommentList/ui/CommentList"
-import * as s from "./PostCard.module.css"
+import s from "./PostCard.module.css"
 
 export type PostCardProps = {
 	post: {

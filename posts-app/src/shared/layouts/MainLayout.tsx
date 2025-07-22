@@ -3,7 +3,7 @@ import type { ReactNode } from "react"
 import LayoutFooter from "../../widgets/LayoutFooter/LayoutFooter"
 import LayoutHeader from "../../widgets/LayoutHeader/LayoutHeader"
 import { useTheme } from "../lib/theme/useTheme"
-import * as s from "./MainLayout.module.css"
+import s from "./MainLayout.module.css"
 
 type MainLayoutProps = {
 	children: ReactNode

@@ -1,7 +1,7 @@
 import { createContext } from "react"
 import { useTheme } from "../../lib/theme/useTheme"
 import Portal from "../../portal/Portal"
-import * as s from "./Modal.module.css"
+import s from "./Modal.module.css"
 import ModalBody from "./ModalBody"
 import ModalFooter from "./ModalFooter"
 import ModalHeader from "./ModalHeader"

@@ -10,11 +10,7 @@ type ComponentProps = {
 }
 function withLoading(Component: FC<ComponentProps>) {
 	return function ComponentWithLoading({ isLoading, ...props }: ComponentWithLoadingProps) {
-		return isLoading ? (
-			<div className="loading-component">Загрузка...</div>
-		) : (
-			<Component {...props} />
-		)
+		return isLoading ? <div className="loading-component">Загрузка...</div> : <Component {...props} />
 	}
 }
 export default withLoading

@@ -24,11 +24,7 @@ function PostList() {
 	return (
 		<Grid container spacing={3}>
 			<Grid size={{ xs: 12, md: 4 }}>
-				<PostLengthFilter
-					value={length}
-					changeValue={handleChangeLength}
-					maxValue={maxTitleLength}
-				/>
+				<PostLengthFilter value={length} changeValue={handleChangeLength} maxValue={maxTitleLength} />
 			</Grid>
 			<Grid size="grow">
 				<List>
