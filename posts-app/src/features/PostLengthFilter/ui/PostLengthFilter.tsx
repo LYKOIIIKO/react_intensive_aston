@@ -21,15 +21,7 @@ function PostLengthFilter({ value, changeValue, maxValue }: PostLengthFilterProp
 				<Typography textAlign="center" fontWeight="bold">
 					Длина заголовка
 				</Typography>
-				<Slider
-					getAriaLabel={() => "post-length-filter-group"}
-					name="post-length-filter"
-					value={value}
-					max={maxValue}
-					step={1}
-					onChange={handleChange}
-					valueLabelDisplay="auto"
-				/>
+				<Slider getAriaLabel={() => "post-length-filter-group"} name="post-length-filter" value={value} max={maxValue} step={1} onChange={handleChange} valueLabelDisplay="auto" />
 				<Typography textAlign="center">
 					{value[0]} симв. - {value[1]} симв.
 				</Typography>

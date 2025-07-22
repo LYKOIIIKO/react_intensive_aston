@@ -11,10 +11,7 @@ function PhotoPage() {
 	const { data: photo, error, isLoading } = useGetPhotoByIdQuery(+photoId)
 
 	//поскольку placeholder поменял домен для правильного отображения картинок преобразуем получаемую url в рабочую ссылку
-	const photoURL = photo?.url.replace(
-		/(https:\/\/via\.placeholder\.com)(\/(\d+)\/([^\/]+))/,
-		"https://placehold.co$2/FFF"
-	)
+	const photoURL = photo?.url.replace(/(https:\/\/via\.placeholder\.com)(\/(\d+)\/([^\/]+))/, "https://placehold.co$2/FFF")
 
 	if (isLoading) return <p>Загрузка фото...</p>
 

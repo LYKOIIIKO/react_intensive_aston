@@ -8,10 +8,7 @@ type PhotoCardProps = {
 }
 
 function PhotoCard({ photo }: PhotoCardProps) {
-	const photoURL = photo.url.replace(
-		/(https:\/\/via\.placeholder\.com)(\/(\d+)\/([^\/]+))/,
-		"https://placehold.co$2/FFF"
-	)
+	const photoURL = photo.url.replace(/(https:\/\/via\.placeholder\.com)(\/(\d+)\/([^\/]+))/, "https://placehold.co$2/FFF")
 	return (
 		<ImageListItem>
 			<img srcSet={photoURL} alt={photo.title} loading="lazy" />

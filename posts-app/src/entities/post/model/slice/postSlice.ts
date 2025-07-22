@@ -1,5 +1,4 @@
 import { createEntityAdapter, createSlice, type PayloadAction } from "@reduxjs/toolkit"
-
 import type { RootState } from "../../../../app/providers/store/slices"
 import type { Post } from "../../../../shared/types/Post"
 
@@ -25,9 +24,5 @@ const postSlice = createSlice({
 
 export const { loadPosts, setPosts } = postSlice.actions
 
-export const {
-	selectAll: selectAllPosts,
-	selectById: selectPostById,
-	selectEntities: selectPostEntities,
-} = postAdapter.getSelectors<RootState>((state) => state.posts)
+export const { selectAll: selectAllPosts, selectById: selectPostById, selectEntities: selectPostEntities } = postAdapter.getSelectors<RootState>((state) => state.posts)
 export default postSlice

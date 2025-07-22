@@ -24,7 +24,6 @@ const userSlice = createSlice({
 
 export const { loadUsers, setUsers } = userSlice.actions
 
-export const { selectAll: selectAllUsers, selectById: selectUserById } =
-	userAdapter.getSelectors<RootState>((state) => state.users)
+export const { selectAll: selectAllUsers, selectById: selectUserById } = userAdapter.getSelectors<RootState>((state) => state.users)
 
 export default userSlice

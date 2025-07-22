@@ -3,12 +3,7 @@ import { useSelector } from "react-redux"
 import { store } from "../../../../app/providers/store"
 import type { RootState } from "../../../../app/providers/store/slices"
 import { useGetPostsQuery } from "../../../../entities/post/api/postsApi"
-import {
-	loadPosts,
-	selectAllPosts,
-	selectPostById,
-	setPosts,
-} from "../../../../entities/post/model/slice/postSlice"
+import { loadPosts, selectAllPosts, selectPostById, setPosts } from "../../../../entities/post/model/slice/postSlice"
 
 function usePosts(id?: number) {
 	const { data, error, isLoading } = useGetPostsQuery()

@@ -45,13 +45,7 @@ const PostCard = ({ post }: PostCardProps) => {
 					</div>
 				</div>
 
-				{isLoading ? (
-					<p>Загрузка комментариев...</p>
-				) : (
-					comments?.length && (
-						<CommentList comments={comments} open={open} toogle={toogle} />
-					)
-				)}
+				{isLoading ? <p>Загрузка комментариев...</p> : comments?.length && <CommentList comments={comments} open={open} toogle={toogle} />}
 			</Paper>
 		</ListItem>
 	)
