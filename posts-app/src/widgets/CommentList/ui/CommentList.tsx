@@ -15,11 +15,9 @@ type CommentListProps = {
 }
 
 function CommentList({ post, open, toogle }: CommentListProps) {
-	const handleToogle = () => toogle()
-
 	return (
 		<div>
-			<div className={s.accordionSummary} onClick={handleToogle}>
+			<div className={s.accordionSummary} onClick={toogle}>
 				<Typography fontWeight="bold">Комментарии</Typography>
 				<ExpandMoreIcon />
 			</div>

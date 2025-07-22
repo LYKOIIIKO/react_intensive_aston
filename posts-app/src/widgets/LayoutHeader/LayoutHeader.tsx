@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography"
 import { useState } from "react"
 import ThemeSwitcher from "../../features/ThemeSwitcher/ui/ThemeSwitcher"
 import ButtonToogle from "../../shared/ui/Button/ButtonToogle.tsx"
-import { Modal } from "../../shared/ui/Modal/Modal.tsx"
+import Modal from "../../shared/ui/Modal/Modal.tsx"
 import s from "./LayoutHeader.module.css"
 
 function LayoutHeader() {
