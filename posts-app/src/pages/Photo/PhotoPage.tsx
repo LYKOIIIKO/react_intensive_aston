@@ -1,10 +1,10 @@
 import Typography from "@mui/material/Typography"
 import { useParams } from "react-router"
-import { fakePhotos } from "../../../mocks/fakePhotos"
+import { fakePhotos } from "../../mocks/fakePhotos"
 
 function PhotoPage() {
 	const { photoId } = useParams()
-	const photo = fakePhotos.find((photo) => photo.id === +photoId)
+	const photo = fakePhotos.find((photo) => photoId && photo.id === +photoId)
 	return (
 		<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
 			<Typography>{photo?.title}</Typography>

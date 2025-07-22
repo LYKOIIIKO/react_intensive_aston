@@ -1,14 +1,14 @@
 import Grid from "@mui/material/Grid"
 import { Outlet, useParams } from "react-router"
-import { fakeUsers } from "../../../mocks/fakeUsers"
-import UserInfo from "../../../widgets/UserInfo/ui/UserInfo"
-import UserTabs from "../../../widgets/UserTabs/ui/UserTabs"
-import Page404 from "../../404-page"
+import { fakeUsers } from "../../mocks/fakeUsers"
+import UserInfo from "../../widgets/UserInfo/ui/UserInfo"
+import UserTabs from "../../widgets/UserTabs/ui/UserTabs"
+import Page404 from "../404/Page404"
 
 function UserPage() {
 	const { userId } = useParams()
 
-	let checkId = fakeUsers.some((user) => user.id === +userId)
+	let checkId = fakeUsers.some((user) => userId && user.id === +userId)
 
 	return checkId ? (
 		<Grid container spacing={3}>

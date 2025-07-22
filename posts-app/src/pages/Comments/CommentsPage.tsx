@@ -3,16 +3,16 @@ import List from "@mui/material/List"
 import Typography from "@mui/material/Typography"
 import React from "react"
 import { useParams } from "react-router"
-import CommentCard from "../../../entities/comment/ui/CommentCard"
-import { fakeComments } from "../../../mocks/fakeComments"
-import { fakePosts } from "../../../mocks/fakePosts"
+import CommentCard from "../../entities/comment/ui/CommentCard"
+import { fakeComments } from "../../mocks/fakeComments"
+import { fakePosts } from "../../mocks/fakePosts"
 
 function CommentsPage() {
 	const { userId } = useParams()
 
 	//поскольку комментарии не содержат userId приходится перебирать сначала посты по userId, а потом перебирать отфильтрованные посты по postId
 
-	const postsArr = fakePosts.filter((post) => post.userId === +userId)
+	const postsArr = fakePosts.filter((post) => userId && post.userId === +userId)
 
 	const commentsArr = postsArr.map((post) => {
 		return fakeComments.filter((comment) => {

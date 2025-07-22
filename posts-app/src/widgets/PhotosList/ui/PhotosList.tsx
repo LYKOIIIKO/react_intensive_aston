@@ -13,7 +13,7 @@ function PhotosList() {
 
 	if (userId) {
 		albumsArr = fakeAlbums.filter((album) => album.userId === +userId)
-	} else albumsArr = fakeAlbums.filter((album) => album.id === +albumId)
+	} else albumsArr = fakeAlbums.filter((album) => albumId && album.id === +albumId)
 
 	const photosArr = albumsArr.map((album) => {
 		return fakePhotos.filter((photo) => {

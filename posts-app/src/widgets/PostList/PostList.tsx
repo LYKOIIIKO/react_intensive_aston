@@ -53,7 +53,10 @@ function PostList() {
 					)}
 					{(postId || userId) &&
 						filteredPosts.map((post) => {
-							if (post.id === +postId || post.userId === +userId)
+							if (
+								(postId && post.id === +postId) ||
+								(userId && post.userId === +userId)
+							)
 								return <PostCard key={post.id} post={post} />
 						})}
 				</List>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import withLoading from "../../../shared/lib/hoc/withLoading"
-import PostList from "../../../widgets/PostList/PostList"
+import withLoading from "../../shared/lib/hoc/withLoading"
+import PostList from "../../widgets/PostList/PostList"
 
 const PostListWithLoading = withLoading(PostList)
 

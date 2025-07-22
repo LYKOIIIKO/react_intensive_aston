@@ -9,7 +9,7 @@ import PhotosList from "../../PhotosList/ui/PhotosList"
 function AlbumsList() {
 	const { albumId, userId } = useParams()
 
-	const userAlbums = fakeAlbums.filter((album) => album.userId === +userId)
+	const userAlbums = fakeAlbums.filter((album) => userId && album.userId === +userId)
 
 	return (
 		<List>
