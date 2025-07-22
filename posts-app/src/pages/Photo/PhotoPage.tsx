@@ -1,10 +1,13 @@
 import Typography from "@mui/material/Typography"
 import { useParams } from "react-router"
-import { useGetPhotoByIdQuery } from "../../../entities/photo/api/photosApi"
-import Page404 from "../../404-page"
+import { useGetPhotoByIdQuery } from "../../entities/photo/api/photosApi"
+import Page404 from "../404/Page404"
 
 function PhotoPage() {
 	const { photoId } = useParams()
+
+	if (!photoId) return
+
 	const { data: photo, error, isLoading } = useGetPhotoByIdQuery(+photoId)
 
 	//поскольку placeholder поменял домен для правильного отображения картинок преобразуем получаемую url в рабочую ссылку

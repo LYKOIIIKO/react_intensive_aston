@@ -1,4 +1,4 @@
-import AlbumsList from "../../../widgets/AlbumsList/ui/AlbumsList"
+import AlbumsList from "../../widgets/AlbumsList/ui/AlbumsList"
 
 function AlbumsPage() {
 	return <AlbumsList />

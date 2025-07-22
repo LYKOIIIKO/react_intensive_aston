@@ -1,10 +1,6 @@
 import List from "@mui/material/List"
 import { useParams } from "react-router"
-import {
-	useGetAlbumsByUserQuery,
-	useGetAlbumsQuery,
-	useGetPhotosByAlbumIdQuery,
-} from "../../../entities/album/api/albumsApi"
+import { useGetAlbumsByUserQuery, useGetAlbumsQuery, useGetPhotosByAlbumIdQuery } from "../../../entities/album/api/albumsApi"
 import AlbumCard from "../../../entities/album/ui/AlbumCard"
 import PhotosList from "../../PhotosList/ui/PhotosList"
 
@@ -13,17 +9,9 @@ function AlbumsList() {
 
 	const { data: albums, error, isLoading } = useGetAlbumsQuery()
 
-	const {
-		data: albumByUserId,
-		error: errorUser,
-		isLoading: isLoadingUser,
-	} = useGetAlbumsByUserQuery(+userId)
+	const { data: albumByUserId, error: errorUser, isLoading: isLoadingUser } = useGetAlbumsByUserQuery(+userId)
 
-	const {
-		data: photosByAlbumId,
-		error: errorPhoto,
-		isLoading: isLoadingPhoto,
-	} = useGetPhotosByAlbumIdQuery(+albumId)
+	const { data: photosByAlbumId, error: errorPhoto, isLoading: isLoadingPhoto } = useGetPhotosByAlbumIdQuery(+albumId)
 
 	if (isLoading || isLoadingUser || isLoadingPhoto) return <p>Загрузка...</p>
 
@@ -47,12 +35,9 @@ function AlbumsList() {
 	return (
 		<>
 			<List>
-				{!albumId &&
-					!userId &&
-					albums?.map((album) => <AlbumCard key={album.id} album={album} />)}
+				{!albumId && !userId && albums?.map((album) => <AlbumCard key={album.id} album={album} />)}
 
-				{albumByUserId &&
-					albumByUserId?.map((album) => <AlbumCard key={album.id} album={album} />)}
+				{albumByUserId && albumByUserId?.map((album) => <AlbumCard key={album.id} album={album} />)}
 			</List>
 			{photosByAlbumId && <PhotosList photos={photosByAlbumId} />}
 		</>

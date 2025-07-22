@@ -1,12 +1,14 @@
 import Grid from "@mui/material/Grid"
 import { Outlet, useParams } from "react-router"
-import useUsers from "../../../features/UsersList/model/hooks/useUsers"
-import UserInfo from "../../../widgets/UserInfo/ui/UserInfo"
-import UserTabs from "../../../widgets/UserTabs/ui/UserTabs"
-import Page404 from "../../404-page"
+import useUsers from "../../features/UsersList/model/hooks/useUsers"
+import UserInfo from "../../widgets/UserInfo/ui/UserInfo"
+import UserTabs from "../../widgets/UserTabs/ui/UserTabs"
+import Page404 from "../404/Page404"
 
 function UserPage() {
 	const { userId } = useParams()
+
+	if (!userId) return
 
 	const { userById, error, isLoading } = useUsers(+userId)
 

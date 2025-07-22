@@ -11,14 +11,16 @@ import PostCard from "../../entities/post/ui/PostCard"
 import { filterByLength } from "../../features/PostLengthFilter/lib/filterByLength"
 import PostLengthFilter from "../../features/PostLengthFilter/ui/PostLengthFilter"
 import usePosts from "../../features/PostList/model/hooks/usePosts"
-import Page404 from "../../pages/404-page"
+import Page404 from "../../pages/404/Page404"
 
 function PostList() {
 	const { postId, userId } = useParams()
 
-	const { posts, error } = usePosts()
+	const { posts, error, isLoading } = usePosts()
 
-	const postById = useSelector((state: RootState) => selectPostById(state, +postId))
+	const postById = useSelector((state: RootState) =>
+		postId ? selectPostById(state, +postId) : undefined
+	)
 
 	if (error) {
 		if ("status" in error) {
@@ -45,6 +47,8 @@ function PostList() {
 		setLength([0, maxTitleLength])
 	}, [maxTitleLength])
 
+	if (isLoading) return <p>Загрузка...</p>
+
 	return (
 		<Grid container spacing={3}>
 			{!postId && !userId && (
@@ -61,10 +65,10 @@ function PostList() {
 				<List>
 					{!postId &&
 						!userId &&
-						filteredPosts?.map((post) => <PostCard key={post.id} post={post} />)}
+						filteredPosts.map((post) => <PostCard key={post.id} post={post} />)}
 
 					{userId &&
-						filteredPosts?.map((post) => {
+						filteredPosts.map((post) => {
 							if (post.userId === +userId)
 								return <PostCard key={post.id} post={post} />
 						})}
@@ -79,6 +83,7 @@ function PostList() {
 						</ListItem>
 					)}
 				</List>
+
 				{postId && !postById && <Page404 />}
 			</Grid>
 		</Grid>
