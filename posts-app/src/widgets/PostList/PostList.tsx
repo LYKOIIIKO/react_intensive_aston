@@ -6,12 +6,10 @@ import { useParams } from "react-router"
 import PostCard from "../../entities/post/ui/PostCard"
 import { filterByLength } from "../../features/PostLengthFilter/lib/filterByLength"
 import PostLengthFilter from "../../features/PostLengthFilter/ui/PostLengthFilter"
-import usePosts from "../../features/PostList/model/hooks/usePosts"
+import { fakePosts } from "../../mocks/fakePosts"
 
 function PostList() {
 	const { postId, userId } = useParams()
-
-	const fakePosts = usePosts()
 
 	const maxTitleLength = useMemo(() => {
 		return fakePosts.reduce((max, i) => Math.max(max, i.title.length), -Infinity)
@@ -31,19 +29,13 @@ function PostList() {
 		<Grid container spacing={3}>
 			{!postId && !userId && (
 				<Grid size={{ xs: 12, md: 4 }}>
-					<PostLengthFilter
-						value={length}
-						changeValue={handleChangeLength}
-						maxValue={maxTitleLength}
-					/>
+					<PostLengthFilter value={length} changeValue={handleChangeLength} maxValue={maxTitleLength} />
 				</Grid>
 			)}
 
 			<Grid size="grow">
 				<List>
-					{!postId &&
-						!userId &&
-						filteredPosts.map((post) => <PostCard key={post.id} post={post} />)}
+					{!postId && !userId && filteredPosts.map((post) => <PostCard key={post.id} post={post} />)}
 					{!filteredPosts.length && (
 						<div>
 							<Typography variant="h6" textAlign="center">
@@ -53,11 +45,7 @@ function PostList() {
 					)}
 					{(postId || userId) &&
 						filteredPosts.map((post) => {
-							if (
-								(postId && post.id === +postId) ||
-								(userId && post.userId === +userId)
-							)
-								return <PostCard key={post.id} post={post} />
+							if ((postId && post.id === +postId) || (userId && post.userId === +userId)) return <PostCard key={post.id} post={post} />
 						})}
 				</List>
 			</Grid>
