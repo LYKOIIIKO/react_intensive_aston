@@ -1,6 +1,6 @@
 import type { RootState } from "@app/providers/store/slices"
 import { createEntityAdapter, createSlice, type PayloadAction } from "@reduxjs/toolkit"
-import type { Post } from "@shared/types/Post"
+import type { Post } from "../types"
 
 const postAdapter = createEntityAdapter<Post>()
 

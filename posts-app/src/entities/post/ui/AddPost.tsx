@@ -1,9 +1,11 @@
 import Button from "@mui/material/Button"
+import type React from "react"
 import { useCreatePostMutation } from "../api/postsApi"
 
 function AddPost() {
 	const [createPost, { isLoading, isSuccess }] = useCreatePostMutation()
-	const handleSubmit = () => {
+	const handleSubmit = (e: React.MouseEvent) => {
+		e.preventDefault()
 		createPost({ title: "new post" })
 	}
 

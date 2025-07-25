@@ -1,5 +1,5 @@
 import { api } from "@app/providers/store/services/api"
-import type { Post } from "@shared/types/Post"
+import type { Post } from "../model/types"
 
 const postsApi = api.injectEndpoints({
 	endpoints: (build) => ({

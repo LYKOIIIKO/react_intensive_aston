@@ -1,6 +1,6 @@
 import { api } from "@app/providers/store/services/api"
-import type { Album } from "@shared/types/Album"
-import type { Photo } from "@shared/types/Photo"
+import type { Photo } from "@entities/photo/model/types"
+import type { Album } from "../model/types"
 
 const albumsApi = api.injectEndpoints({
 	endpoints: (build) => ({

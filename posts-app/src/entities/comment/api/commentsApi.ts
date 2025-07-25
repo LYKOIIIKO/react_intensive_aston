@@ -1,5 +1,5 @@
 import { api } from "@app/providers/store/services/api"
-import type { Comment } from "@shared/types/Comment"
+import type { Comment } from "../model/types"
 
 const commentsApi = api.injectEndpoints({
 	endpoints: (build) => ({

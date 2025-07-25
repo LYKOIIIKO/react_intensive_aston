@@ -1,7 +1,7 @@
 import ImageListItem from "@mui/material/ImageListItem"
 import ImageListItemBar from "@mui/material/ImageListItemBar"
-import type { Photo } from "@shared/types/Photo"
 import { Link } from "react-router"
+import type { Photo } from "../model/types"
 
 type PhotoCardProps = {
 	photo: Photo

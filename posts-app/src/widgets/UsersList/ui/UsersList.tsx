@@ -1,7 +1,7 @@
+import type { User } from "@entities/user/model/types"
 import UserCard from "@entities/user/ui/UserCard"
 import useUsers from "@features/UsersList/model/hooks/useUsers"
-import List from "@mui/material/List"
-import s from "./UsersList.module.css"
+import ItemList from "@shared/ui/ItemList/ItemList"
 
 function UsersList() {
 	const { users, error, isLoading } = useUsers()
@@ -15,12 +15,6 @@ function UsersList() {
 		return <div>Ошибка :{error.message}</div>
 	}
 
-	return (
-		<List className={s.container}>
-			{users?.map((user) => (
-				<UserCard key={user.id} user={user} />
-			))}
-		</List>
-	)
+	return <ItemList<User> items={users} renderItem={(user) => <UserCard key={user.id} user={user} />} />
 }
 export default UsersList

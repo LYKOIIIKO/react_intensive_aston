@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { ThemeContext } from "./useTheme"
+import ThemeContext from "@shared/context/ThemeContext"
+import { useEffect, useState, type PropsWithChildren } from "react"
 
 const StorageKey = "app-theme"
 
@@ -21,7 +21,7 @@ const getTheme = (): Themes => {
 	return theme as Themes
 }
 
-const ThemeProvider = (props: { children: React.ReactNode }) => {
+const ThemeProvider = ({ children }: PropsWithChildren) => {
 	const [theme, setTheme] = useState<Themes>(getTheme)
 
 	useEffect(() => {
@@ -36,7 +36,7 @@ const ThemeProvider = (props: { children: React.ReactNode }) => {
 				supportedThemes,
 			}}
 		>
-			{props.children}
+			{children}
 		</ThemeContext.Provider>
 	)
 }

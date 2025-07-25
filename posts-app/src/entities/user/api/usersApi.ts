@@ -1,5 +1,5 @@
 import { api } from "@app/providers/store/services/api"
-import type { User } from "@shared/types/User"
+import type { User } from "../model/types"
 
 const usersApi = api.injectEndpoints({
 	endpoints: (build) => ({

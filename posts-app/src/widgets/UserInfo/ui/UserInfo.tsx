@@ -1,5 +1,5 @@
+import type { User } from "@entities/user/model/types"
 import Typography from "@mui/material/Typography"
-import type { User } from "@shared/types/User"
 
 type UserInfoProps = {
 	user: User

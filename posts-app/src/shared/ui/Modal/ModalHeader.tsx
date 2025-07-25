@@ -1,11 +1,8 @@
 import Typography from "@mui/material/Typography"
+import type { PropsWithChildren } from "react"
 import s from "./Modal.module.css"
 
-type ModalHeaderProps = {
-	children: React.ReactNode
-}
-
-export default function ModalHeader({ children }: ModalHeaderProps) {
+export default function ModalHeader({ children }: PropsWithChildren) {
 	return (
 		<Typography className={s.title} variant="h6">
 			{children}

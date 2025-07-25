@@ -1,0 +1,30 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"strict": true,
+		"baseUrl": "./src",
+		"paths": {
+			"@app/*": [
+				"app/*"
+			],
+			"@entities/*": [
+				"entities/*"
+			],
+			"@features/*": [
+				"features/*"
+			],
+			"@pages/*": [
+				"pages/*"
+			],
+			"@shared/*": [
+				"shared/*"
+			],
+			"@widgets/*": [
+				"widgets/*"
+			],
+		},
+		"esModuleInterop": true,
+		"skipLibCheck": true
+	}
+}

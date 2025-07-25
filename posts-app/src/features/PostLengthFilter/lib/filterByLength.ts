@@ -1,4 +1,4 @@
-import type { Post } from "@shared/types/Post"
+import type { Post } from "@entities/post/model/types"
 
 export function filterByLength(posts: Post[], value: number[]) {
 	if (value) {

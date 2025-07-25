@@ -1,18 +1,16 @@
+import ModalContext from "@shared/context/ModalContext"
 import { useTheme } from "@shared/lib/theme/useTheme"
 import Portal from "@shared/portal/Portal"
-import { createContext } from "react"
+import type { PropsWithChildren } from "react"
 import * as s from "./Modal.module.css"
 import ModalBody from "./ModalBody"
 import ModalFooter from "./ModalFooter"
 import ModalHeader from "./ModalHeader"
 
-export const ModalContext = createContext<{ toogle: () => void } | undefined>(undefined)
-
 type ModalProps = {
 	toogle: () => void
-	children: React.ReactNode | React.ReactNode[]
 }
-function Modal({ toogle, children }: ModalProps) {
+function Modal({ toogle, children }: PropsWithChildren<ModalProps>) {
 	const { theme } = useTheme()
 
 	return (

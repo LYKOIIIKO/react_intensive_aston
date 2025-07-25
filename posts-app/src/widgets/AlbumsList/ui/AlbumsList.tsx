@@ -1,6 +1,7 @@
 import { useGetAlbumsByUserQuery, useGetAlbumsQuery, useGetPhotosByAlbumIdQuery } from "@entities/album/api/albumsApi"
+import type { Album } from "@entities/album/model/types"
 import AlbumCard from "@entities/album/ui/AlbumCard"
-import List from "@mui/material/List"
+import ItemList from "@shared/ui/ItemList/ItemList"
 import PhotosList from "@widgets/PhotosList/ui/PhotosList"
 import { useParams } from "react-router"
 
@@ -34,11 +35,10 @@ function AlbumsList() {
 
 	return (
 		<>
-			<List>
-				{!albumId && !userId && albums?.map((album) => <AlbumCard key={album.id} album={album} />)}
+			{!albumId && !userId && albums && <ItemList<Album> items={albums} renderItem={(album) => <AlbumCard key={album.id} album={album} />} />}
 
-				{albumByUserId && albumByUserId?.map((album) => <AlbumCard key={album.id} album={album} />)}
-			</List>
+			{albumByUserId && <ItemList<Album> items={albumByUserId} renderItem={(album) => <AlbumCard key={album.id} album={album} />} />}
+
 			{photosByAlbumId && <PhotosList photos={photosByAlbumId} />}
 		</>
 	)

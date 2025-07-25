@@ -1,9 +1,8 @@
+import type { Comment } from "@entities/comment/model/types"
 import CommentCard from "@entities/comment/ui/CommentCard"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import Divider from "@mui/material/Divider"
-import List from "@mui/material/List"
 import Typography from "@mui/material/Typography"
-import type { Comment } from "@shared/types/Comment"
+import ItemList from "@shared/ui/ItemList/ItemList"
 import React from "react"
 import s from "./CommentList.module.css"
 
@@ -20,16 +19,8 @@ function CommentList({ comments, open, toogle }: CommentListProps) {
 				<Typography fontWeight="bold">Комментарии</Typography>
 				<ExpandMoreIcon />
 			</div>
-			{open && (
-				<List>
-					{comments.map((comment) => (
-						<React.Fragment key={comment.id}>
-							<Divider />
-							<CommentCard comment={comment} />
-						</React.Fragment>
-					))}
-				</List>
-			)}
+
+			{open && <ItemList<Comment> items={comments} renderItem={(comment) => <CommentCard key={comment.id} comment={comment} />} />}
 		</div>
 	)
 }

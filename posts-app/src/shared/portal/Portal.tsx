@@ -1,12 +1,11 @@
-import { useRef } from "react"
+import { useRef, type PropsWithChildren } from "react"
 import { createPortal } from "react-dom"
 
 type PortalProps = {
 	id: string
-	children: React.ReactNode
 }
 
-function Portal({ id = "portal-root", children }: PortalProps) {
+function Portal({ id = "portal-root", children }: PropsWithChildren<PortalProps>) {
 	const rootRef = useRef<HTMLElement>(null)
 
 	let container = document.getElementById(id)
