@@ -1,17 +1,16 @@
-import Typography from "@mui/material/Typography"
-import { createContext, useContext } from "react"
+import ModalContext from "../../context/ModalContext"
 import { useTheme } from "../../lib/theme/useTheme"
 import Portal from "../../portal/Portal"
-import ButtonToogle from "../Button/ButtonToogle"
-import * as s from "./Modal.module.css"
-
-const ModalContext = createContext<{ toogle: () => void } | undefined>(undefined)
+import s from "./Modal.module.css"
+import ModalBody from "./ModalBody"
+import ModalFooter from "./ModalFooter"
+import ModalHeader from "./ModalHeader"
 
 type ModalProps = {
 	toogle: () => void
 	children: React.ReactNode | React.ReactNode[]
 }
-export function Modal({ toogle, children }: ModalProps) {
+function Modal({ toogle, children }: ModalProps) {
 	const { theme } = useTheme()
 
 	return (
@@ -25,27 +24,8 @@ export function Modal({ toogle, children }: ModalProps) {
 	)
 }
 
-type ModalHeaderProps = {
-	children: React.ReactNode | React.ReactNode[]
-}
+Modal.Header = ModalHeader
+Modal.Body = ModalBody
+Modal.Footer = ModalFooter
 
-Modal.Header = ({ children }: ModalHeaderProps) => {
-	return (
-		<Typography className={s.title} variant="h6">
-			{children}
-		</Typography>
-	)
-}
-
-type ModalBodyProps = {
-	children: React.ReactNode | React.ReactNode[]
-}
-
-Modal.Body = ({ children }: ModalBodyProps) => {
-	return <Typography className={s.description}>{children}</Typography>
-}
-
-Modal.Footer = () => {
-	const context = useContext(ModalContext)
-	return <ButtonToogle action={context.toogle}>закрыть</ButtonToogle>
-}
+export default Modal

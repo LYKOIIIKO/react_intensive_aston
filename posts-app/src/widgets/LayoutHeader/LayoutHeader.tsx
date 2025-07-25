@@ -3,7 +3,7 @@ import { useState } from "react"
 import { NavLink } from "react-router"
 import ThemeSwitcher from "../../features/ThemeSwitcher/ui/ThemeSwitcher"
 import ButtonToogle from "../../shared/ui/Button/ButtonToogle.tsx"
-import { Modal } from "../../shared/ui/Modal/Modal.tsx"
+import Modal from "../../shared/ui/Modal/Modal.tsx"
 import Navigation from "../../shared/ui/Navigation/Navigation.tsx"
 import s from "./LayoutHeader.module.css"
 
@@ -32,9 +32,8 @@ function LayoutHeader() {
 				<Modal toogle={toogle}>
 					<Modal.Header>О проекте</Modal.Header>
 					<Modal.Body>
-						"Posts app"- это учебный проект в рамках интенсива по React от компании
-						Aston. В нем я учусь использовать возможности библиотеки, создавать
-						структуру проекта, а также готовлюсь к тех.ревью.
+						"Posts app"- это учебный проект в рамках интенсива по React от компании Aston. В нем я учусь использовать возможности библиотеки, создавать структуру проекта, а также готовлюсь
+						к тех.ревью.
 					</Modal.Body>
 					<Modal.Footer />
 				</Modal>
