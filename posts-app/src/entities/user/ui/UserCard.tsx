@@ -1,7 +1,7 @@
 import ListItem from "@mui/material/ListItem"
 import Typography from "@mui/material/Typography"
+import type { User } from "@shared/types/User"
 import { NavLink } from "react-router"
-import type { User } from "../../../shared/types/User"
 import s from "./UserCard.module.css"
 
 export type UserCardProps = {

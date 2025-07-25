@@ -1,7 +1,7 @@
+import { useGetPhotoByIdQuery } from "@entities/photo/api/photosApi"
 import Typography from "@mui/material/Typography"
+import Page404 from "@pages/404/Page404"
 import { useParams } from "react-router"
-import { useGetPhotoByIdQuery } from "../../entities/photo/api/photosApi"
-import Page404 from "../404/Page404"
 
 function PhotoPage() {
 	const { photoId } = useParams()

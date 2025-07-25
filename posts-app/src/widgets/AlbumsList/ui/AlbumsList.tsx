@@ -1,8 +1,8 @@
+import { useGetAlbumsByUserQuery, useGetAlbumsQuery, useGetPhotosByAlbumIdQuery } from "@entities/album/api/albumsApi"
+import AlbumCard from "@entities/album/ui/AlbumCard"
 import List from "@mui/material/List"
+import PhotosList from "@widgets/PhotosList/ui/PhotosList"
 import { useParams } from "react-router"
-import { useGetAlbumsByUserQuery, useGetAlbumsQuery, useGetPhotosByAlbumIdQuery } from "../../../entities/album/api/albumsApi"
-import AlbumCard from "../../../entities/album/ui/AlbumCard"
-import PhotosList from "../../PhotosList/ui/PhotosList"
 
 function AlbumsList() {
 	const { albumId, userId } = useParams()

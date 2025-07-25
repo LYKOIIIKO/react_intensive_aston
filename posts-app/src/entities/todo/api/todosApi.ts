@@ -1,5 +1,5 @@
-import { api } from "../../../app/providers/store/services/api"
-import type { ToDo } from "../../../shared/types/ToDo"
+import { api } from "@app/providers/store/services/api"
+import type { ToDo } from "@shared/types/ToDo"
 
 const todosApi = api.injectEndpoints({
 	endpoints: (build) => ({

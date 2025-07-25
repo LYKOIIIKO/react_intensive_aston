@@ -1,8 +1,8 @@
+import { useGetToDosByUserIdQuery } from "@entities/todo/api/todosApi"
+import ToDoCard from "@entities/todo/ui/ToDoCard"
 import List from "@mui/material/List"
 import Typography from "@mui/material/Typography"
 import { useParams } from "react-router"
-import { useGetToDosByUserIdQuery } from "../../../entities/todo/api/todosApi"
-import ToDoCard from "../../../entities/todo/ui/ToDoCard"
 
 function ToDosList() {
 	const { userId } = useParams()

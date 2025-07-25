@@ -1,6 +1,6 @@
 import ListItem from "@mui/material/ListItem"
 import Typography from "@mui/material/Typography"
-import type { Comment } from "../../../shared/types/Comment"
+import type { Comment } from "@shared/types/Comment"
 import s from "./CommentCard.module.css"
 
 type CommentCardProps = {

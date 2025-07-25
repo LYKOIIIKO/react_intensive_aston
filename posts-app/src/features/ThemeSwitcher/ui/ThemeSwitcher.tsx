@@ -1,8 +1,8 @@
 import Stack from "@mui/material/Stack"
 import Switch from "@mui/material/Switch"
 import Typography from "@mui/material/Typography"
+import { useTheme } from "@shared/lib/theme/useTheme"
 import { useState } from "react"
-import { useTheme } from "../../../shared/lib/theme/useTheme"
 
 function ThemeSwitcher() {
 	const { theme, setTheme } = useTheme()

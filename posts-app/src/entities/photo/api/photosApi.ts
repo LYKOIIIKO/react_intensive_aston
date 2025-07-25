@@ -1,5 +1,5 @@
-import { api } from "../../../app/providers/store/services/api"
-import type { Photo } from "../../../shared/types/Photo"
+import { api } from "@app/providers/store/services/api"
+import type { Photo } from "@shared/types/Photo"
 
 const photosApi = api.injectEndpoints({
 	endpoints: (build) => ({

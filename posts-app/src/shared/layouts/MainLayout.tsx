@@ -1,8 +1,8 @@
 import CssBaseline from "@mui/material/CssBaseline"
+import { useTheme } from "@shared/lib/theme/useTheme"
+import LayoutFooter from "@widgets/LayoutFooter/LayoutFooter"
+import LayoutHeader from "@widgets/LayoutHeader/LayoutHeader"
 import { Outlet } from "react-router"
-import LayoutFooter from "../../widgets/LayoutFooter/LayoutFooter"
-import LayoutHeader from "../../widgets/LayoutHeader/LayoutHeader"
-import { useTheme } from "../lib/theme/useTheme"
 import s from "./MainLayout.module.css"
 
 function MainLayout() {

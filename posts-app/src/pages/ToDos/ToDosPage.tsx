@@ -1,4 +1,4 @@
-import ToDosList from "../../widgets/ToDosList/ui/ToDosList"
+import ToDosList from "@widgets/ToDosList/ui/ToDosList"
 
 function ToDosPage() {
 	return <ToDosList />

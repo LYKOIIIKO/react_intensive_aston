@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography"
-import type { User } from "../../../shared/types/User"
+import type { User } from "@shared/types/User"
 
 type UserInfoProps = {
 	user: User

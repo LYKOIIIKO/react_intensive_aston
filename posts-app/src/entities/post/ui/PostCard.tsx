@@ -1,12 +1,12 @@
+import { useGetCommentsByPostIdQuery } from "@entities/comment/api/commentsApi"
 import Avatar from "@mui/material/Avatar"
 import ListItem from "@mui/material/ListItem"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
+import type { Post } from "@shared/types/Post"
+import CommentList from "@widgets/CommentList/ui/CommentList"
 import { useCallback, useState } from "react"
 import { Link } from "react-router"
-import type { Post } from "../../../shared/types/Post"
-import CommentList from "../../../widgets/CommentList/ui/CommentList"
-import { useGetCommentsByPostIdQuery } from "../../comment/api/commentsApi"
 import s from "./PostCard.module.css"
 
 type PostCardProps = {

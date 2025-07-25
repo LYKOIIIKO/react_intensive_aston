@@ -1,4 +1,4 @@
-import UsersList from "../../widgets/UsersList/ui/UsersList"
+import UsersList from "@widgets/UsersList/ui/UsersList"
 
 function UsersPage() {
 	return <UsersList />

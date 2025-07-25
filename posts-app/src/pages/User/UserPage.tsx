@@ -1,9 +1,9 @@
+import useUsers from "@features/UsersList/model/hooks/useUsers"
 import Grid from "@mui/material/Grid"
+import Page404 from "@pages/404/Page404"
+import UserInfo from "@widgets/UserInfo/ui/UserInfo"
+import UserTabs from "@widgets/UserTabs/ui/UserTabs"
 import { Outlet, useParams } from "react-router"
-import useUsers from "../../features/UsersList/model/hooks/useUsers"
-import UserInfo from "../../widgets/UserInfo/ui/UserInfo"
-import UserTabs from "../../widgets/UserTabs/ui/UserTabs"
-import Page404 from "../404/Page404"
 
 function UserPage() {
 	const { userId } = useParams()

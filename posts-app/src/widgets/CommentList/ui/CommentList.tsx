@@ -1,10 +1,10 @@
+import CommentCard from "@entities/comment/ui/CommentCard"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import Divider from "@mui/material/Divider"
 import List from "@mui/material/List"
 import Typography from "@mui/material/Typography"
+import type { Comment } from "@shared/types/Comment"
 import React from "react"
-import CommentCard from "../../../entities/comment/ui/CommentCard"
-import type { Comment } from "../../../shared/types/Comment"
 import s from "./CommentList.module.css"
 
 type CommentListProps = {

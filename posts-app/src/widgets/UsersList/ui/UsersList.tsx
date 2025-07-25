@@ -1,6 +1,6 @@
+import UserCard from "@entities/user/ui/UserCard"
+import useUsers from "@features/UsersList/model/hooks/useUsers"
 import List from "@mui/material/List"
-import UserCard from "../../../entities/user/ui/UserCard"
-import useUsers from "../../../features/UsersList/model/hooks/useUsers"
 import s from "./UsersList.module.css"
 
 function UsersList() {

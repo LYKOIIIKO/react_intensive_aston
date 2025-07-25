@@ -1,7 +1,7 @@
+import PhotoCard from "@entities/photo/ui/PhotoCard"
 import Box from "@mui/material/Box"
 import ImageList from "@mui/material/ImageList"
-import PhotoCard from "../../../entities/photo/ui/PhotoCard"
-import type { Photo } from "../../../shared/types/Photo"
+import type { Photo } from "@shared/types/Photo"
 
 type PhotosListProps = {
 	photos: Photo[]

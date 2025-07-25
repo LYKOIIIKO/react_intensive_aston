@@ -1,9 +1,9 @@
+import { store } from "@app/providers/store"
+import type { RootState } from "@app/providers/store/slices"
+import { useGetUsersQuery } from "@entities/user/api/usersApi"
+import { selectAllUsers, selectUserById, loadUsers, setUsers } from "@entities/user/model/slice/userSlice"
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { store } from "../../../../app/providers/store"
-import type { RootState } from "../../../../app/providers/store/slices"
-import { useGetUsersQuery } from "../../../../entities/user/api/usersApi"
-import { loadUsers, selectAllUsers, selectUserById, setUsers } from "../../../../entities/user/model/slice/userSlice"
 
 function useUsers(id?: number) {
 	const { data, error, isLoading } = useGetUsersQuery()
@@ -20,6 +20,6 @@ function useUsers(id?: number) {
 		}
 	}, [isLoading])
 
-	return { users, userById, error, isLoading }
+	return id ? { users, userById, error, isLoading } : { users, error, isLoading }
 }
 export default useUsers

@@ -8,7 +8,7 @@
 		"module": "ESNext",
 		"skipLibCheck": true,
 		/* Bundler mode */
-		"moduleResolution": "bundler",
+		"moduleResolution": "node10",
 		"allowImportingTsExtensions": true,
 		"verbatimModuleSyntax": true,
 		"moduleDetection": "force",

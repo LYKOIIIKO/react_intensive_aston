@@ -1,9 +1,9 @@
+import { store } from "@app/providers/store"
+import type { RootState } from "@app/providers/store/slices"
+import { useGetPostsQuery } from "@entities/post/api/postsApi"
+import { loadPosts, selectAllPosts, selectPostById, setPosts } from "@entities/post/model/slice/postSlice"
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { store } from "../../../../app/providers/store"
-import type { RootState } from "../../../../app/providers/store/slices"
-import { useGetPostsQuery } from "../../../../entities/post/api/postsApi"
-import { loadPosts, selectAllPosts, selectPostById, setPosts } from "../../../../entities/post/model/slice/postSlice"
 
 function usePosts(id?: number) {
 	const { data, error, isLoading } = useGetPostsQuery()
@@ -20,6 +20,6 @@ function usePosts(id?: number) {
 		}
 	}, [isLoading])
 
-	return { posts, postById, error, isLoading }
+	return id ? { posts, postById, error, isLoading } : { posts, error, isLoading }
 }
 export default usePosts
