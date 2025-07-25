@@ -1,14 +1,5 @@
-import { createContext, useContext } from "react"
-import type { Themes } from "./ThemeProvider"
-
-const ThemeContext = createContext<
-	| {
-			theme: Themes
-			setTheme: (theme: Themes) => void
-			supportedThemes: { [key: string]: string }
-	  }
-	| undefined
->(undefined)
+import { useContext } from "react"
+import ThemeContext from "../../context/ThemeContext"
 
 const useTheme = () => {
 	const context = useContext(ThemeContext)

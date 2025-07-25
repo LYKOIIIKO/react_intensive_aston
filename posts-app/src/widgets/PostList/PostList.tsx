@@ -11,7 +11,10 @@ function PostList() {
 		return fakePosts.reduce((max, i) => Math.max(max, i.title.length), -Infinity)
 	}, [fakePosts])
 
-	const [length, setLength] = useState([0, maxTitleLength])
+	const [length, setLength] = useState(() => {
+		const initialState = [0, maxTitleLength]
+		return initialState
+	})
 
 	const filteredPosts = useMemo(() => {
 		return filterByLength(length)
